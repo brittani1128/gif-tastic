@@ -1,4 +1,4 @@
-
+$( document ).ready();
 
 var cartoons = ["rugrats", "hey arnold", "pinky and the brain", "doug", "catdog", "sailor moon", "johnny bravo", "rockos modern life", "powerpuff girls", "dexters laboratory"];
 
@@ -18,17 +18,6 @@ function renderButtons(){
         $("#cartoonButtons").append(btn);
     }       
 }
-
-
-
-//function that grabs user input and pushes to array, then renders new button
-// function addCartoon(event){
-//     event.preventDefault();
-
-//     var userInput = $("#cartoonInput").val();
-//     cartoons.push(userInput);
-//     renderButtons();
-// }
 
  //  form for user input to add cartoon to array, and button to page
 $("#submitBtn").on("click", function(event){
@@ -61,8 +50,8 @@ function getCartoon(){
                 var imageUrl = results[i].images.original_still.url;
                 var dataAnimate = results[i].images.original.url;
                 
-                //create container to hold image and rating
-                var container = $("<div>");
+                //create wrapper to hold image and rating
+                var wrapper = $("<div class='wrapper'>");
                 var imageDiv = $("<img>")
 
                 //set attributes
@@ -76,9 +65,9 @@ function getCartoon(){
                 var ratingDiv = $("<p>").addClass("rating").text(rating);
                     
                 //add to page
-                $("#gifs").prepend(container);
-                container.prepend(imageDiv);
-                container.prepend(ratingDiv);   
+                $("#gifs").prepend(wrapper);
+                wrapper.prepend(imageDiv);
+                wrapper.prepend(ratingDiv);   
             }
         
             //click event to animate gif
