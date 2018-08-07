@@ -1,12 +1,14 @@
-$( document ).ready();
+$( document ).ready(function(){
 
+//VARIABLES ============================================================================================
 var cartoons = ["rugrats", "hey arnold", "pinky and the brain", "doug", "catdog", "sailor moon", "johnny bravo", "rockos modern life", "powerpuff girls", "dexters laboratory"];
 
 
 var results;
 
-//function to render buttons on page
+//FUNCTIONS ==========================================================================================
 
+//function to render buttons on page
 function renderButtons(){
     $("#cartoonButtons").empty();
     for (i = 0; i < cartoons.length; i++){
@@ -19,7 +21,8 @@ function renderButtons(){
     }       
 }
 
- //  form for user input to add cartoon to array, and button to page
+
+//form for user input to add cartoon to array, and button to page
 $("#submitBtn").on("click", function(event){
     event.preventDefault();
     var newCartoon = $("#cartoonInput").val().trim();
@@ -27,9 +30,10 @@ $("#submitBtn").on("click", function(event){
     renderButtons();
 });
 
+
 //on click event that makes ajax call to retrieve gifs
-function getCartoon(){
-    $(".button").on("click", function(){
+    $(document).on("click", ".button", function(){
+
         var limit = 10;
         var cartoon = $(this).attr("data-name");
         var api = "0OJAMidpTmJ1JC0FZoZHFGAy0ChWqHKj";
@@ -54,7 +58,7 @@ function getCartoon(){
                 var wrapper = $("<div class='wrapper'>");
                 var imageDiv = $("<img>")
 
-                //set attributes
+                //set attributes to image tag
                 imageDiv.attr("src", imageUrl);
                 imageDiv.attr({
                     "data-still": imageUrl, 
@@ -66,44 +70,33 @@ function getCartoon(){
                     
                 //add to page
                 $("#gifs").prepend(wrapper);
-                wrapper.prepend(imageDiv);
-                wrapper.prepend(ratingDiv);   
+                wrapper.append(imageDiv);
+                wrapper.append(ratingDiv);   
             }
         
-            //click event to animate gif
-            $(".gif").on("click", function(){
-                
-                var state = $(this).attr("data-state");
-                
-                if (state === "still"){
-                    var url = $(this).attr("data-animate");
-                    $(this).attr("src", url);
-                    $(this).attr("data-state", "animate");
-                }
-                else if (state === "animate"){
-                    var url = $(this).attr("data-still");
-                    $(this).attr("src", url);
-                    $(this).attr("data-state", "still");
-                }
-            });
         })     
+
+
+        //click event to animate gif
+        $("#gifs").on("click", ".gif", function(){
+                
+            var state = $(this).attr("data-state");
+            
+            if (state === "still"){
+                var url = $(this).attr("data-animate");
+                $(this).attr("src", url);
+                $(this).attr("data-state", "animate");
+            }
+            else if (state === "animate"){
+                var url = $(this).attr("data-still");
+                $(this).attr("src", url);
+                $(this).attr("data-state", "still");
+            }
+        });
     }); 
-}
-
-
-            
-
-
-$(document).on("click", ".button", getCartoon);
-// $(document).on("click", ".gif", getCartoon);
-            
-            //EXTRAS
-            //  mobile responsive
-            // list additional metadata (title, tags, etc)
-
-
 
 
   
 renderButtons();
 
+});
