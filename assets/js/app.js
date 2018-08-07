@@ -37,7 +37,7 @@ $("#submitBtn").on("click", function(event){
         var limit = 10;
         var cartoon = $(this).attr("data-name");
         var api = "0OJAMidpTmJ1JC0FZoZHFGAy0ChWqHKj";
-        var queryUrl = "http://api.giphy.com/v1/gifs/search?limit=10&q=" + cartoon +
+        var queryUrl = "https://api.giphy.com/v1/gifs/search?limit=10&q=" + cartoon +
         "&api_key=" + api;
 
         $.ajax ({
