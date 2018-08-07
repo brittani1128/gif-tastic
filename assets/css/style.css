@@ -12,15 +12,16 @@ label {
     border:2px solid black;
 }
 #cartoonButtons{
-    margin-bottom: 30px;
+    margin: auto;
+    text-align:center;
 }
 #cartoonForm{
     text-align: center;
 }
 #cartoonInput {
-   
     height:30px;
-
+    width:90%;
+    margin-bottom:10px;
 
 }
 
@@ -71,7 +72,7 @@ img {
 #gifs {
     margin:auto;
     max-width: 90%;
-    /* display:block; */
+    text-align:center;
 }
    
 .container {
@@ -94,4 +95,23 @@ img {
 .wrapper {
     float:left;
     margin:auto;
+}
+
+@media only screen and (max-width:950px){
+    .button {
+        padding:5px;
+        height:auto;
+        font-size:15px;
+        letter-spacing: 0px;
+       
+    }
+    label {
+        font-size:20px;
+        padding:10px;
+    }
+
+    #submitWrap {
+        max-width:30%;
+    }
+    
 }

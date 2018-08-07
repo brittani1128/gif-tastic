@@ -1,7 +1,7 @@
 $( document ).ready(function(){
 
 //VARIABLES ============================================================================================
-var cartoons = ["rugrats", "hey arnold", "pinky and the brain", "doug", "catdog", "sailor moon", "johnny bravo", "rockos modern life", "powerpuff girls", "dexters laboratory"];
+var cartoons = ["rugrats", "hey arnold", "pinky and the brain", "doug", "catdog", "sailor moon", "johnny bravo", "rockos modern life", "powerpuff girls", "dexters laboratory", "angry beavers", "ren and stimpy", "cow and chicken", "animaniacs"];
 
 
 var results;
@@ -44,7 +44,7 @@ $("#submitBtn").on("click", function(event){
             url:queryUrl,
             method:"GET"
         }).then(function(response){
-         
+        //  console.log(response);
             results = response.data;
             console.log(results);
 
